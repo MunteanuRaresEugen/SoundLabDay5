@@ -147,6 +147,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AudioDevices.h" />
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="AudioLock.h" />
     <ClInclude Include="AudioParameters.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="SinWaveStrategy.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AudioDevices.cpp" />
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="AudioLock.cpp" />
     <ClCompile Include="dllmain.cpp" />

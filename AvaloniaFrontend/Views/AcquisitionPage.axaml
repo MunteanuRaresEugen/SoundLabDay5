@@ -14,7 +14,7 @@
 		<vm:AcquisitionViewModel>
 			<x:Arguments>
 				<services:NavigationService></services:NavigationService>
-			</x:Arguments>
+            </x:Arguments>
 		</vm:AcquisitionViewModel>
 	</Design.DataContext>
 	<Grid RowDefinitions="1*, 4*, 4*">
