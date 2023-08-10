@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaFrontend.ViewModels"
+             xmlns:services="using:AvaloniaFrontend.Services"
+             xmlns:wrapper="using:AudioEngineWrapper"
+             xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaFrontend.Views.ConfigPage"
+             x:DataType="vm:ConfigViewModel"
+             x:CompileBindings="True">
+
+	<UserControl.DataTemplates>
+        <DataTemplate DataType="wrapper:DeviceData">
+            <StackPanel Orientation="Horizontal">
+                <icons:MaterialIcon Kind="Check" IsVisible="{Binding IsDefault}"/>
+                <TextBlock Text="{Binding Name}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+	<Design.DataContext>
+		<vm:ConfigViewModel>
+			<x:Arguments>
+				<services:SelectedDevices/>
+			</x:Arguments>
+		</vm:ConfigViewModel>
+	</Design.DataContext>
+
+	<Grid RowDefinitions="Auto Auto" ColumnDefinitions="Auto *" Margin="10">
+		<TextBlock Text="Select Capture Device:"
+                   VerticalAlignment="Center" Margin="0 0 10 0"></TextBlock>
+		<ComboBox Grid.Column="1" HorizontalAlignment="Stretch"
+                  Items="{Binding SelectedDevices.CaptureDevices}"
+                  SelectedItem="{Binding SelectedDevices.SelectedCapture}">
+        </ComboBox>
+
+		<TextBlock Grid.Row="1" Text="Select Playback Device:"
+                   VerticalAlignment="Center" Margin="0 0 10 0"></TextBlock>
+		<ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"
+                  Items="{Binding SelectedDevices.PlaybackDevices}"
+                  SelectedItem="{Binding SelectedDevices.SelectedPlayback}">
+        </ComboBox>
+	</Grid>
+</UserControl>

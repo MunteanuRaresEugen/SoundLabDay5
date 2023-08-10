@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AvaloniaFrontend": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

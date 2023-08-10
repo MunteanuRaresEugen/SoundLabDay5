@@ -10,6 +10,9 @@ AudioEngine::AudioDevices::AudioDevices()
 
 bool AudioEngine::AudioDevices::Init()
 {
+	m_captureDevices.clear();
+	m_playbackDevices.clear();
+
 	ma_result result;
 	ma_device_info* pPlaybackDeviceInfos;
 	ma_uint32 playbackDeviceCount;

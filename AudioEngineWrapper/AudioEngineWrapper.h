@@ -22,7 +22,7 @@ namespace AudioEngineWrapper
 	public:
 		AudioEngineService(size_t sampleRate, size_t maxBufferSize);
 
-		void Start(AudioStrategyType type);
+		void Start(DeviceData^ playback, DeviceData^ capture, AudioStrategyType type);
 
 		void Stop();
 

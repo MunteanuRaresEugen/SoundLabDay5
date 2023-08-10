@@ -24,7 +24,8 @@ namespace AudioEngine
 		_instance = this;
 	}
 
-	void FancyAudioEngine::Start(AudioStrategyType type)
+	void FancyAudioEngine::Start(const ma_device_id* playbackDevice,
+		const ma_device_id* captureDevice, AudioStrategyType type)
 	{
 		switch (type)
 		{
@@ -50,7 +51,7 @@ namespace AudioEngine
 			break;
 		}
 
-		AudioParameters params = { nullptr, nullptr, ma_format_f32, m_sampleRate, 1, data_callback };
+		AudioParameters params = { playbackDevice, captureDevice, ma_format_f32, m_sampleRate, 1, data_callback };
 
 		m_buffers.clear();
 

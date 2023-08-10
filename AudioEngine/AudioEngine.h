@@ -27,7 +27,8 @@ namespace AudioEngine
 		FancyAudioEngine(const FancyAudioEngine& engine) = delete;
 		FancyAudioEngine(FancyAudioEngine&& engine) = delete;
 
-		void Start(AudioStrategyType type = AudioStrategyType::Duplex);
+		void Start(const ma_device_id* playbackDevice,
+			const ma_device_id* captureDevice, AudioStrategyType type = AudioStrategyType::Duplex);
 
 		void Stop();
 

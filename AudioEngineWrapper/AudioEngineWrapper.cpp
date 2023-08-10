@@ -18,11 +18,11 @@ AudioEngineWrapper::AudioEngineService::AudioEngineService(size_t sampleRate, si
 	}
 }
 
-void AudioEngineWrapper::AudioEngineService::Start(AudioStrategyType type)
+void AudioEngineWrapper::AudioEngineService::Start(DeviceData^ playback, DeviceData^ capture, AudioStrategyType type)
 {
 	try
 	{
-		engine->Start((AudioEngine::AudioStrategyType)type);
+		engine->Start(&playback->info->id, &capture->info->id, (AudioEngine::AudioStrategyType)type);
 	}
 	catch (const std::exception& e)
 	{

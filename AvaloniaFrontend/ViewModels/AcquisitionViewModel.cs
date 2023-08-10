@@ -17,9 +17,10 @@ public sealed partial class AcquisitionViewModel : ObservableObject
 	[ObservableProperty]
 	private AudioStrategyType _selectedStrategy;
 
-	public AcquisitionViewModel(NavigationService navigationService)
+	public AcquisitionViewModel(NavigationService navigationService, SelectedDevices selectedDevices)
 	{
 		NavigationService = navigationService;
+		SelectedDevices = selectedDevices;
 	}
 
 	public List<AudioStrategyType> AudioStrategyTypes { get; } = Enum.GetValues<AudioStrategyType>().ToList();
@@ -27,13 +28,15 @@ public sealed partial class AcquisitionViewModel : ObservableObject
 	public PlotViewModel FFTPlot { get; } = new() { Title = "FFT plot" };
 	public NavigationService NavigationService { get; }
 
+	public SelectedDevices SelectedDevices { get; }
+
 	private bool StopCanExecute() => CanAcquire == true;
 
 	[RelayCommand]
 	public async Task Start()
 	{
 		CanAcquire = true;
-		_audioEngineService.Start(SelectedStrategy);
+		_audioEngineService.Start(SelectedDevices.SelectedPlayback, SelectedDevices.SelectedCapture, SelectedStrategy);
 
 		NavigationService.IsNavigationAllowed = false;
 

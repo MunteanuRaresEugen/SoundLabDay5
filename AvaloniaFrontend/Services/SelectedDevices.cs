@@ -14,7 +14,7 @@ public partial class SelectedDevices : ObservableObject
 		PlaybackDevices = _audioDevices.GetPlaybackDevices().ToList();
 
 		_selectedCapture = CaptureDevices.First(x=>x.IsDefault);
-		_selectedPlayback = CaptureDevices.First(x=>x.IsDefault);
+		_selectedPlayback = PlaybackDevices.First(x=>x.IsDefault);
 	}
 
 	public List<DeviceData> CaptureDevices { get; }
