@@ -23,23 +23,23 @@ namespace AudioEngine
 		_instance = this;
 	}
 
-	void FancyAudioEngine::Start(AudioStreategyType type)
+	void FancyAudioEngine::Start(AudioStrategyType type)
 	{
 		switch (type)
 		{
-		case AudioEngine::AudioStreategyType::Duplex:
+		case AudioEngine::AudioStrategyType::Duplex:
 			m_strategy.reset(new DuplexStrategy());
 			break;
-		case AudioEngine::AudioStreategyType::Loopback:
+		case AudioEngine::AudioStrategyType::Loopback:
 			m_strategy.reset(new LoopbackStrategy());
 			break;
-		case AudioEngine::AudioStreategyType::FilePlayback:
+		case AudioEngine::AudioStrategyType::FilePlayback:
 			m_strategy.reset(new FilePlaybackStrategy());
 			break;
-		case AudioEngine::AudioStreategyType::SinWave:
+		case AudioEngine::AudioStrategyType::SinWave:
 			m_strategy.reset(new SinWaveStrategy());
 			break;
-			case AudioEngine::AudioStreategyType::DuplexFiltered:
+			case AudioEngine::AudioStrategyType::DuplexFiltered:
 			m_strategy.reset(new DuplexFilteredStrategy());
 			break;
 		default:

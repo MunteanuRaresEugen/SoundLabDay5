@@ -7,7 +7,7 @@ using namespace System;
 
 namespace AudioEngineWrapper
 {
-	public enum class AudioStreategyType
+	public enum class AudioStrategyType
 	{
 		Duplex = 0,
 		Loopback,
@@ -21,7 +21,7 @@ namespace AudioEngineWrapper
 	public:
 		AudioEngineService(size_t sampleRate, size_t maxBufferSize);
 
-		void Start(AudioStreategyType type);
+		void Start(AudioStrategyType type);
 
 		void Stop();
 

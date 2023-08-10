@@ -9,7 +9,7 @@
 
 namespace AudioEngine
 {
-	enum class AUDIOENGINE_API AudioStreategyType
+	enum class AUDIOENGINE_API AudioStrategyType
 	{
 		Duplex = 0,
 		Loopback,
@@ -26,7 +26,7 @@ namespace AudioEngine
 		FancyAudioEngine(const FancyAudioEngine& engine) = delete;
 		FancyAudioEngine(FancyAudioEngine&& engine) = delete;
 
-		void Start(AudioStreategyType type = AudioStreategyType::Duplex);
+		void Start(AudioStrategyType type = AudioStrategyType::Duplex);
 
 		void Stop();
 
