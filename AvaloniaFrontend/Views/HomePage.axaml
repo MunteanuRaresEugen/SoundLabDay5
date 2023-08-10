@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:AvaloniaFrontend.ViewModels"
+			 xmlns:services="using:AvaloniaFrontend.Design"
+			 xmlns:s="using:AvaloniaFrontend.Services"
+			 xmlns:core="using:Core"
+			 xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaFrontend.Views.HomePage"
+			 x:DataType="vm:HomeViewModel"
+			 x:CompileBindings="True">
+	
+	<Design.DataContext>
+		<vm:HomeViewModel>
+			<x:Arguments>
+				<services:DesignPageService />
+				<s:NavigationService></s:NavigationService>
+			</x:Arguments>
+		</vm:HomeViewModel>
+	</Design.DataContext>
+
+	<Grid RowDefinitions="1*, 5*">
+		<TextBlock HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Grid.Row="0" Margin="10">Home</TextBlock>
+		<ItemsRepeater Items="{Binding Pages}" Margin="0, 10, 0, 0" Grid.Row="1" HorizontalAlignment="Center" Name="Repeater">
+			<ItemsRepeater.Layout>
+				<UniformGridLayout ></UniformGridLayout>
+			</ItemsRepeater.Layout>
+			<ItemsRepeater.ItemTemplate>
+				<DataTemplate>
+					<Button Margin="10" Width="100" Height="100" Command="{ReflectionBinding #Repeater.DataContext.ButtonClickCommand}" CommandParameter="{Binding}">
+						<DockPanel LastChildFill="True">
+							<icons:MaterialIcon Width="50" Height="50"  Kind="{Binding Icon}" DockPanel.Dock="Top" Margin="0 10 0 0" />
+							<TextBlock Text="{Binding Name}" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
+						</DockPanel>
+					</Button>
+				</DataTemplate>
+			</ItemsRepeater.ItemTemplate>
+		</ItemsRepeater>
+	</Grid>
+</UserControl>

@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:AvaloniaFrontend.ViewModels"
+			 xmlns:views="using:AvaloniaFrontend.Views"
+			 xmlns:services="using:AvaloniaFrontend.Services"
+			 xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaFrontend.Views.AcquisitionPage"
+			 x:DataType="vm:AcquisitionViewModel"
+			 x:CompileBindings="True">
+	<Design.DataContext>
+		<vm:AcquisitionViewModel>
+			<x:Arguments>
+				<services:NavigationService></services:NavigationService>
+			</x:Arguments>
+		</vm:AcquisitionViewModel>
+	</Design.DataContext>
+	<Grid RowDefinitions="1*, 4*, 4*">
+		<Grid ColumnDefinitions="*, *, *" Margin="10">
+			<Button Command="{Binding StartCommand}"
+				HorizontalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				Margin="5 0">
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
+					<icons:MaterialIcon Kind="Play"></icons:MaterialIcon>
+					<TextBlock>Start</TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Command="{Binding StopCommand}"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center"
+					Grid.Column="1"
+					Margin="5 0">
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
+					<icons:MaterialIcon Kind="Stop" VerticalAlignment="Center"></icons:MaterialIcon>
+					<TextBlock VerticalAlignment="Center">Stop</TextBlock>
+				</StackPanel>
+			</Button>
+			<ComboBox SelectedItem="{Binding SelectedStrategy}"
+					  Items="{Binding AudioStrategyTypes}"
+					  Grid.Column="2"
+					  Margin="5 0"
+					  VerticalAlignment="Center"
+					  HorizontalAlignment="Stretch"
+					  IsEnabled="{Binding !CanAcquire}">
+
+			</ComboBox>
+		</Grid>
+
+		<views:PlotView DataContext="{Binding TimePlot}" Grid.Row="1"></views:PlotView>
+		<views:PlotView DataContext="{Binding FFTPlot}" Grid.Row="2"></views:PlotView>
+	</Grid>
+</UserControl>
