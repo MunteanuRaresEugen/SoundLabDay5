@@ -69,6 +69,9 @@
     <ClInclude Include="DuplexFilteredStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LoopbackFilterStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -105,6 +108,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DuplexFilteredStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoopbackFilterStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

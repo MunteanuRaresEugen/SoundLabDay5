@@ -160,6 +160,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="IAudioStrategy.h" />
     <ClInclude Include="ImportExport.h" />
+    <ClInclude Include="LoopbackFilterStrategy.h" />
     <ClInclude Include="LoopbackStrategy.h" />
     <ClInclude Include="miniaudio.h" />
     <ClInclude Include="pch.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="DuplexStrategy.cpp" />
     <ClCompile Include="FFTProcessor.cpp" />
     <ClCompile Include="FilePlaybackStrategy.cpp" />
+    <ClCompile Include="LoopbackFilterStrategy.cpp" />
     <ClCompile Include="LoopbackStrategy.cpp" />
     <ClCompile Include="miniaudio.c" />
     <ClCompile Include="pch.cpp">

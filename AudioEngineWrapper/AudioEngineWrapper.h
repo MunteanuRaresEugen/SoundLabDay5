@@ -13,7 +13,8 @@ namespace AudioEngineWrapper
 		Loopback,
 		FilePlayback,
 		SinWave,
-		DuplexFiltered
+		DuplexFiltered,
+		LoopbackFilter
 	};
 
 	public ref class AudioEngineService

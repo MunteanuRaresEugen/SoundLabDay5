@@ -7,6 +7,7 @@
 #include "FilePlaybackStrategy.h"
 #include "SinWaveStrategy.h"
 #include "DuplexFilteredStrategy.h"
+#include "LoopbackFilterStrategy.h"
 
 namespace AudioEngine
 {
@@ -17,7 +18,7 @@ namespace AudioEngine
 		_instance->callback(pDevice, pOutput, pInput, frameCount);
 	}
 
-	FancyAudioEngine::FancyAudioEngine(size_t sampleRate, size_t maxBufferSize) 
+	FancyAudioEngine::FancyAudioEngine(size_t sampleRate, size_t maxBufferSize)
 		: m_device(nullptr), m_maxBufferSize(maxBufferSize), m_strategy(nullptr), m_sampleRate(sampleRate), m_mutex()
 	{
 		_instance = this;
@@ -39,8 +40,11 @@ namespace AudioEngine
 		case AudioEngine::AudioStrategyType::SinWave:
 			m_strategy.reset(new SinWaveStrategy());
 			break;
-			case AudioEngine::AudioStrategyType::DuplexFiltered:
+		case AudioEngine::AudioStrategyType::DuplexFiltered:
 			m_strategy.reset(new DuplexFilteredStrategy());
+			break;
+		case AudioEngine::AudioStrategyType::LoopbackFiltered:
+			m_strategy.reset(new LoopbackFilterStrategy());
 			break;
 		default:
 			break;
