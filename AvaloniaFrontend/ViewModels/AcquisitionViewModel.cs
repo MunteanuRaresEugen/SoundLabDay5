@@ -15,7 +15,7 @@ public sealed partial class AcquisitionViewModel : ObservableObject
     private bool _canAcquire = false;
 
     [ObservableProperty]
-    private AudioStreategyType _selectedStrategy;
+    private AudioStrategyType _selectedStrategy;
 
     public AcquisitionViewModel(NavigationService navigationService)
     {
@@ -23,7 +23,7 @@ public sealed partial class AcquisitionViewModel : ObservableObject
     }
 
 
-    public List<AudioStreategyType> AudioStrategyTypes { get; } = Enum.GetValues<AudioStreategyType>().ToList();
+    public List<AudioStrategyType> AudioStrategyTypes { get; } = Enum.GetValues<AudioStrategyType>().ToList();
     public PlotViewModel TimePlot { get; } = new() { Title = "Time plot" };
     public PlotViewModel FFTPlot { get; } = new() { Title = "FFT plot" };
     public NavigationService NavigationService { get; }
